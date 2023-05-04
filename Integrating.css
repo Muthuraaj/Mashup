@@ -437,6 +437,12 @@ select {
     transform: rotate(360deg);
   }
 }
+.buttons1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
 
 @media screen and (min-width: 700px) and (max-width: 1000px) {
   #body {
@@ -667,5 +673,8 @@ select {
   }
   #table {
     height: 200px;
+  }
+  #header2 {
+    gap: 5px;
   }
 }

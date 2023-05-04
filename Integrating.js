@@ -46,6 +46,9 @@ require(["js/qlik"], function (qlik) {
   var app = qlik.openApp("3158d525-f15e-4afd-acdb-cb8a162e78ef", config);
   const main = document.getElementById("maincontent");
   const prevbtn = document.getElementById("btn2");
+  const closebtn = document.getElementById("btn3");
+  const forwardbtn = document.getElementById("btn4");
+
   //getting windows width
   //when a window screen change the function will call
   var windowWidth = window.innerWidth;
@@ -154,33 +157,37 @@ require(["js/qlik"], function (qlik) {
 
       show[i].classList.remove("shownone");
       show[i].classList.add("showdisplay");
-
-      if (show[i].id === "document") {
-        documentTab();
-      }
-      if (show[i].id === "contact") {
-        contact();
-      }
-      if (show[i].id === "prospect") {
-        Prospect();
-      }
-      if (show[i].id === "workflow") {
-        workflow();
-      }
-      if (show[i].id === "chating") {
-        chating();
-      }
-      if (show[i].id === "marketing") {
-        marketing();
-      }
-      if (show[i].id === "email") {
-        Email();
-      }
-      if (show[i].id === "transaction") {
-        transition();
-      }
-      if (show[i].id === "maintaince") {
-        maintainence();
+      switch (show[i].id) {
+        case "document":
+          documentTab();
+          break;
+        case "contact":
+          contact();
+          break;
+        case "prospect":
+          Prospect();
+          break;
+        case "workflow":
+          workflow();
+          break;
+        case "chating":
+          chating();
+          break;
+        case "marketing":
+          marketing();
+          break;
+        case "email":
+          Email();
+          break;
+        case "transaction":
+          transition();
+          break;
+        case "maintaince":
+          maintainence();
+          break;
+        default:
+          Dashboard();
+          break;
       }
     });
   });
@@ -345,39 +352,30 @@ require(["js/qlik"], function (qlik) {
   function previous() {
     app.back();
   }
-  // app.getAppLayout(function (layout) {
-  //   console.log(layout);
-  // });
-  // app.getAppObjectList("sheet", function (reply) {
-  //   var str = "";
-  //   $.each(reply.qAppObjectList.qItems, function (key, value) {
-  //     str += value.qData.title + " ";
-  //     $.each(value.qData.cells, function (k, v) {
-  //       str += v.name + " ";
-  //     });
-  //   });
-  //   alert(str);
-  // });
-  // app.getList("SelectionObject", function (reply) {
-  //   var box = `
-  // <div id='box'>
-  // </div>`;
-  //   var str = reply.qSelectionObject.qSelections;
-  //   for (i = 0; i < str.length; i++) {
-  //     console.log(str[i].qField, str[i].qSelectedCount + "of" + str[i].qTotal);
-  //     box = str[i].qField + str[i].qSelectedCount + "of" + str[i].qTotal;
-  //   }
-  // });
-  // app.getScript().then(function (script) {
-  //   console.log(script);
-  // });
-  // app.bookmark.create("City", "City-bookmark", "kjcmDFj");
-  // app.bookmark.apply("Test");
-  // var global = qlik.getGlobal(config);
-  // console.log(global);
-  // global.getAuthenticatedUser(function (reply) {
-  //   console.log(reply);
-  // });
+  closebtn.addEventListener("click", clearall);
+  function clearall() {
+    app.clearAll();
+  }
+  forwardbtn.addEventListener("click", forward);
+  function forward() {
+    app.forward();
+  }
+  app.getList("SelectionObject", function (reply) {
+    var str = reply.qSelectionObject.qSelections;
+    console.log();
+    console.log(str);
+    for (i = 0; i < str.length; i++) {
+      console.log(str[i].qField);
+      console.log(str[i].qField, str[i].qSelectedCount + "of" + str[i].qTotal);
+      box = str[i].qField + str[i].qSelectedCount + "of" + str[i].qTotal;
+    }
+  });
 
+  app.bookmark.create("City", "City-bookmark", "kjcmDFj");
+  app.bookmark.apply("Test");
+  var global = qlik.getGlobal(config);
+  global.getAuthenticatedUser(function (reply) {
+    alert("Welcome User:" + reply.qReturn);
+  });
   app.getObject("CurrentSelections", "CurrentSelections");
 });
