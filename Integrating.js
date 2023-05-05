@@ -1,11 +1,3 @@
-/*
- * Basic responsive mashup template
- * @owner Enter you name here (xxx)
- */
-/*
- *    Fill in host and port for Qlik engine
- */
-
 var prefix = window.location.pathname.substr(
   0,
   window.location.pathname.toLowerCase().lastIndexOf("/extensions") + 1
@@ -33,7 +25,7 @@ require(["js/qlik"], function (qlik) {
   $("#closePopup").click(function () {
     $("#popup").hide();
   });
-
+  //Getting HTML Elements
   const button = document.getElementById("btn");
   const SideContent = document.getElementsByClassName("Sidebar");
   const Sidemenu = document.getElementById("sidebar");
@@ -44,10 +36,12 @@ require(["js/qlik"], function (qlik) {
   const chevron = document.getElementById("chevron");
   const mobchevron = document.getElementById("mobIcon");
   var app = qlik.openApp("3158d525-f15e-4afd-acdb-cb8a162e78ef", config);
+  var app2 = qlik.openApp("48365501-b7c9-4dd7-ba1e-4e0d935b368e", config);
   const main = document.getElementById("maincontent");
   const prevbtn = document.getElementById("btn2");
   const closebtn = document.getElementById("btn3");
   const forwardbtn = document.getElementById("btn4");
+  const div = document.getElementById("select");
 
   //getting windows width
   //when a window screen change the function will call
@@ -60,6 +54,7 @@ require(["js/qlik"], function (qlik) {
 
   Sidebar(windowWidth);
   function Sidebar(windowWidth) {
+    //windows width is less than 1000
     if (windowWidth < 1000) {
       Sidemenu.style.height = "5%";
       Sidemenu.style.width = "100%";
@@ -70,7 +65,9 @@ require(["js/qlik"], function (qlik) {
         SideContent[i].style.display = "block";
       }
       mobBtn.addEventListener("click", mobilescreen);
-    } else {
+    }
+    //windows width is greater than 1000
+    else {
       Sidemenu.style.width = "5%";
       Sidemenu.style.height = "100%";
       for (i = 0; i < SideContent.length; i++) {
@@ -82,6 +79,7 @@ require(["js/qlik"], function (qlik) {
       button.addEventListener("click", lapscreen);
     }
   }
+  //Mobile Sidebar function
   function mobilescreen() {
     if (Sidemenu.style.height === "5%") {
       Sidemenu.style.height = "100%";
@@ -109,6 +107,7 @@ require(["js/qlik"], function (qlik) {
       mobchevron.classList.add("bx-chevron-down");
     }
   }
+  //Lap sidebar function
   function lapscreen() {
     if (Sidemenu.style.width === "5%") {
       Sidemenu.style.width = "20%";
@@ -138,9 +137,10 @@ require(["js/qlik"], function (qlik) {
   }
 
   // tabs
+  //Default active tabs
   tabs[0].classList.add("active");
   show[0].classList.add("showdisplay");
-
+  //switchin tabs condition using For each
   tabs.forEach((t, i) => {
     t.addEventListener("click", () => {
       tabs.forEach((t) => {
@@ -154,9 +154,10 @@ require(["js/qlik"], function (qlik) {
 
       t.classList.remove("disable");
       t.classList.add("active");
-
+      //for displaying the content when the tab click
       show[i].classList.remove("shownone");
       show[i].classList.add("showdisplay");
+      //Qlik Objects Navigation or switching conditions
       switch (show[i].id) {
         case "document":
           documentTab();
@@ -192,14 +193,17 @@ require(["js/qlik"], function (qlik) {
     });
   });
 
+  //Getting Qlik Objects
   function Dashboard() {
+    //get objects -- inserted here --
+
     app.getObject("card1", "uBCNQnw").then(() => {
       document.getElementById("card1").classList.remove("loader");
     });
-    app.getObject("card2", "uBCNQnw").then(() => {
+    app.getObject("card2", "DPYTJen").then(() => {
       document.getElementById("card2").classList.remove("loader");
     });
-    app.getObject("card3", "uBCNQnw").then(() => {
+    app.getObject("card3", "dpHNqS").then(() => {
       document.getElementById("card3").classList.remove("loader");
     });
     app.getObject("linechart", "kjcmDFj").then(() => {
@@ -219,13 +223,13 @@ require(["js/qlik"], function (qlik) {
     });
   }
   function documentTab() {
-    app.getObject("Charts1", "CxEzm").then(() => {
+    app.getObject("Charts1", "DPYTJen").then(() => {
       document.getElementById("Charts1").classList.remove("loader");
     });
     app.getObject("Charts2", "MqMVdfh").then(() => {
       document.getElementById("Charts2").classList.remove("loader");
     });
-    app.getObject("Charts3", "CxEzm").then(() => {
+    app.getObject("Charts3", "YtZMjQu").then(() => {
       document.getElementById("Charts3").classList.remove("loader");
     });
     app.getObject("Charts4", "CxEzm").then(() => {
@@ -233,7 +237,7 @@ require(["js/qlik"], function (qlik) {
     });
   }
   function contact() {
-    app.getObject("Charts5", "CxEzm").then(() => {
+    app.getObject("Charts5", "dpHNqS").then(() => {
       document.getElementById("Charts5").classList.remove("loader");
     });
 
@@ -245,15 +249,15 @@ require(["js/qlik"], function (qlik) {
       document.getElementById("Charts7").classList.remove("loader");
     });
 
-    app.getObject("Charts8", "CxEzm").then(() => {
+    app.getObject("Charts8", "dXgjx").then(() => {
       document.getElementById("Charts8").classList.remove("loader");
     });
   }
   function Prospect() {
-    app.getObject("Charts9", "CxEzm").then(() => {
+    app.getObject("Charts9", "uBCNQnw").then(() => {
       document.getElementById("Charts9").classList.remove("loader");
     });
-    app.getObject("Charts10", "CxEzm").then(() => {
+    app.getObject("Charts10", "dXgjx").then(() => {
       document.getElementById("Charts10").classList.remove("loader");
     });
     app.getObject("Charts11", "MqMVdfh").then(() => {
@@ -267,10 +271,10 @@ require(["js/qlik"], function (qlik) {
     app.getObject("Charts13", "MqMVdfh").then(() => {
       document.getElementById("Charts13").classList.remove("loader");
     });
-    app.getObject("Charts14", "CxEzm").then(() => {
+    app.getObject("Charts14", "YtZMjQu").then(() => {
       document.getElementById("Charts14").classList.remove("loader");
     });
-    app.getObject("Charts15", "MqMVdfh").then(() => {
+    app.getObject("Charts15", "dXgjx").then(() => {
       document.getElementById("Charts15").classList.remove("loader");
     });
     app.getObject("Charts16", "CxEzm").then(() => {
@@ -278,7 +282,7 @@ require(["js/qlik"], function (qlik) {
     });
   }
   function chating() {
-    app.getObject("Charts17", "MqMVdfh").then(() => {
+    app.getObject("Charts17", "uBCNQnw").then(() => {
       document.getElementById("Charts17").classList.remove("loader");
     });
     app.getObject("Charts18", "CxEzm").then(() => {
@@ -287,7 +291,7 @@ require(["js/qlik"], function (qlik) {
     app.getObject("Charts19", "MqMVdfh").then(() => {
       document.getElementById("Charts19").classList.remove("loader");
     });
-    app.getObject("Charts20", "MqMVdfh").then(() => {
+    app.getObject("Charts20", "YtZMjQu").then(() => {
       document.getElementById("Charts20").classList.remove("loader");
     });
   }
@@ -298,10 +302,10 @@ require(["js/qlik"], function (qlik) {
     app.getObject("Charts22", "CxEzm").then(() => {
       document.getElementById("Charts22").classList.remove("loader");
     });
-    app.getObject("Charts23", "MqMVdfh").then(() => {
+    app.getObject("Charts23", "kjcmDFj").then(() => {
       document.getElementById("Charts23").classList.remove("loader");
     });
-    app.getObject("Charts24", "MqMVdfh").then(() => {
+    app.getObject("Charts24", "dXgjx").then(() => {
       document.getElementById("Charts24").classList.remove("loader");
     });
   }
@@ -312,24 +316,24 @@ require(["js/qlik"], function (qlik) {
     app.getObject("Charts26", "MqMVdfh").then(() => {
       document.getElementById("Charts26").classList.remove("loader");
     });
-    app.getObject("Charts27", "MqMVdfh").then(() => {
+    app.getObject("Charts27", "DPYTJen").then(() => {
       document.getElementById("Charts27").classList.remove("loader");
     });
-    app.getObject("Charts28", "MqMVdfh").then(() => {
+    app.getObject("Charts28", "YtZMjQu").then(() => {
       document.getElementById("Charts28").classList.remove("loader");
     });
   }
   function transition() {
-    app.getObject("Charts29", "CxEzm").then(() => {
+    app.getObject("Charts29", "DPYTJen").then(() => {
       document.getElementById("Charts29").classList.remove("loader");
     });
     app.getObject("Charts30", "MqMVdfh").then(() => {
       document.getElementById("Charts30").classList.remove("loader");
     });
-    app.getObject("Charts31", "MqMVdfh").then(() => {
+    app.getObject("Charts31", "CxEzm").then(() => {
       document.getElementById("Charts31").classList.remove("loader");
     });
-    app.getObject("Charts32", "MqMVdfh").then(() => {
+    app.getObject("Charts32", "YtZMjQu").then(() => {
       document.getElementById("Charts32").classList.remove("loader");
     });
   }
@@ -337,42 +341,59 @@ require(["js/qlik"], function (qlik) {
     app.getObject("Charts33", "MqMVdfh").then(() => {
       document.getElementById("Charts33").classList.remove("loader");
     });
-    app.getObject("Charts34", "MqMVdfh").then(() => {
+    app.getObject("Charts34", "YtZMjQu").then(() => {
       document.getElementById("Charts34").classList.remove("loader");
     });
-    app.getObject("Charts35", "MqMVdfh").then(() => {
+    app.getObject("Charts35", "CxEzm").then(() => {
       document.getElementById("Charts35").classList.remove("loader");
     });
-    app.getObject("Charts36", "MqMVdfh").then(() => {
+    app.getObject("Charts36", "dXgjx").then(() => {
       document.getElementById("Charts36").classList.remove("loader");
     });
   }
+  //defaulty geting the qlik object for mainpage
   Dashboard();
+
+  //customized selection options
+
+  //previous selection
   prevbtn.addEventListener("click", previous);
   function previous() {
     app.back();
   }
+  //clearall selection
   closebtn.addEventListener("click", clearall);
   function clearall() {
     app.clearAll();
   }
+
+  //forward the selection
   forwardbtn.addEventListener("click", forward);
   function forward() {
     app.forward();
   }
-  app.getList("SelectionObject", function (reply) {
-    var str = reply.qSelectionObject.qSelections;
-    console.log();
-    console.log(str);
-    for (i = 0; i < str.length; i++) {
-      console.log(str[i].qField);
-      console.log(str[i].qField, str[i].qSelectedCount + "of" + str[i].qTotal);
-      box = str[i].qField + str[i].qSelectedCount + "of" + str[i].qTotal;
-    }
-  });
+  //condition for manual selection list
+  // app.getList("SelectionObject", function (reply) {
+  //   console.log(reply);
+  //   var str = reply.qSelectionObject.qSelections;
+  //   console.log();
+  //   console.log(str);
+  //   div.innerHTML = "";
 
+  //   for (i = 0; i < str.length; i++) {
+  //     var content = document.createElement("div");
+  //     content.id = "selection-container";
+  //     content.innerText =
+  //       str[i].qField + " " + str[i].qSelectedCount + " of " + str[i].qTotal;
+  //     div.style.marginTop = "5px";
+  //     div.appendChild(content);
+  //   }
+  // });
+
+  //bookmark api
   app.bookmark.create("City", "City-bookmark", "kjcmDFj");
   app.bookmark.apply("Test");
+  //getting global api
   var global = qlik.getGlobal(config);
   global.getAuthenticatedUser(function (reply) {
     alert("Welcome User:" + reply.qReturn);

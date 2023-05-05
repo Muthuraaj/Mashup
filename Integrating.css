@@ -1,29 +1,23 @@
+/* overall styling */
 * {
   margin: 0;
   padding: 0;
   font-family: "Poppins", sans-serif;
   box-sizing: border-box;
 }
-/* body {
-  display: flex;
-} */
+/* body styling */
 #body {
   width: 100%;
   height: 100vh;
   display: flex;
   background-color: #f0f1f3;
 }
+/* sidebar styling */
 #sidebar {
   width: 5%;
   height: 100%;
   background-color: #041737;
   position: relative;
-}
-#maincontent {
-  width: 93%;
-  height: 97%;
-  margin-left: 5px;
-  margin-right: 5px;
 }
 #sideheader {
   color: #fff;
@@ -44,6 +38,7 @@
   margin-top: 5px;
   padding-left: 5px;
 }
+/* sidebar button */
 .button1 {
   font-size: 1.5rem;
   color: #fff;
@@ -104,7 +99,6 @@ hr {
 }
 .sidemenus i {
   font-size: 1.4rem;
-  /* color: #fff;*/
   display: flex;
   align-items: center;
   justify-content: center;
@@ -117,14 +111,12 @@ hr {
   padding-top: 10px;
   padding-bottom: 10px;
   display: flex;
-
   align-items: center;
   justify-content: center;
   text-decoration: none;
   margin-bottom: 3px;
   color: #829ab9;
 }
-
 .sidemenus {
   padding-left: 10%;
 }
@@ -137,7 +129,14 @@ hr {
 .light {
   color: rgb(194, 185, 185);
 }
-
+/* maincontent styling */
+#maincontent {
+  width: 93%;
+  height: 97%;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+/* showcase styling */
 .showcase {
   height: 89%;
   width: 100%;
@@ -149,37 +148,7 @@ hr {
   width: 80%;
   height: 100%;
 }
-#Right-container {
-  width: 20%;
-  height: 100%;
-  border: 1px solid #ffffff;
-  background-color: #ffffff;
-  margin-left: 10px;
-  border-radius: 10px;
-  margin-top: 5px;
-  padding: 5px;
-}
-.heading {
-  font-size: 16px;
-  width: 100%;
-  height: 48%;
-}
-.qlikobjects3 {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.pie-charts {
-  width: 100%;
-  height: 100%;
-}
-.qlikobjects2 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 header {
   margin-top: 5px;
   height: 5%;
@@ -246,14 +215,6 @@ select {
   padding: 5px;
   border-radius: 10px;
 }
-.qlikobjects2 {
-  height: 90%;
-  width: 100%;
-}
-#Qlik-table {
-  width: 100%;
-  height: 100%;
-}
 
 .header {
   display: flex;
@@ -283,29 +244,7 @@ select {
   color: #3a98b5;
   font-size: 2rem;
 }
-.qlikobjects-1 {
-  width: 100%;
-  height: 70%;
-  margin-top: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.kpi-container {
-  width: 100%;
-  height: 100%;
-}
-.charts {
-  width: 100%;
-  height: 100%;
-}
-.qlikobjects1 {
-  width: 100%;
-  height: 80%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 .green span {
   color: green;
 }
@@ -313,7 +252,17 @@ select {
   color: rgb(175, 172, 172);
   margin-left: 5%;
 }
-
+/* right container */
+#Right-container {
+  width: 20%;
+  height: 100%;
+  border: 1px solid #ffffff;
+  background-color: #ffffff;
+  margin-left: 10px;
+  border-radius: 10px;
+  margin-top: 5px;
+  padding: 5px;
+}
 #Right-container:hover {
   box-shadow: 0px 0px 5px #041737;
   cursor: pointer;
@@ -335,9 +284,12 @@ select {
 .heading {
   font-size: 16px;
 }
+/* right container styling ends */
 .Sidebar {
   display: none;
 }
+
+/* classlist added in JS */
 .active {
   background-color: #3963ad !important;
   color: #fff !important;
@@ -373,6 +325,44 @@ select {
 .lapnav {
   width: "20%" !important;
   transition: "all 1s ease" !important;
+}
+.loader {
+  width: 30px !important;
+  height: 30px !important;
+  border: 16px solid #041737 !important;
+  border-top: 16px solid #fff !important;
+  border-bottom: 16px solid #fff !important;
+  border-radius: 50% !important;
+  animation: spin 2s linear infinite !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+/* classlist ends */
+
+/* qlik objects Styling */
+.qlikobjects-1 {
+  width: 100%;
+  height: 70%;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.kpi-container {
+  width: 100%;
+  height: 100%;
+}
+.charts {
+  width: 100%;
+  height: 100%;
+}
+.qlikobjects1 {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #docbody {
   width: 100%;
@@ -414,21 +404,38 @@ select {
   display: flex;
   align-items: center;
 }
-
-.loader {
-  width: 30px !important;
-  height: 30px !important;
-  border: 16px solid #041737 !important; /* Light grey */
-  border-top: 16px solid #fff !important;
-  border-bottom: 16px solid #fff !important; /* Blue */
-  /* Blue */
-  border-radius: 50% !important;
-  animation: spin 2s linear infinite !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+.qlikobjects2 {
+  height: 90%;
+  width: 100%;
 }
+#Qlik-table {
+  width: 100%;
+  height: 100%;
+}
+.heading {
+  font-size: 16px;
+  width: 100%;
+  height: 48%;
+}
+.qlikobjects3 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pie-charts {
+  width: 100%;
+  height: 100%;
+}
+.qlikobjects2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* qlik objects styling ends */
 
+/* animation for loader */
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -437,13 +444,30 @@ select {
     transform: rotate(360deg);
   }
 }
+/* animation ends */
+
+/* qlik selection styling */
 .buttons1 {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
 }
+#select {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  /* margin-top: 5px; */
+  flex-wrap: wrap;
+}
+#selection-container {
+  border: 2px dotted gray;
+  flex: 1;
+  text-align: center;
+}
+/* qlik selection styling ends */
 
+/* width 700-1000 */
 @media screen and (min-width: 700px) and (max-width: 1000px) {
   #body {
     width: 100%;
@@ -561,7 +585,7 @@ select {
     height: 90%;
   }
 }
-
+/* width less than 700 */
 @media screen and (max-width: 700px) {
   #body {
     width: 100%;
