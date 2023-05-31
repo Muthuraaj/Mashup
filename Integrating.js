@@ -36,25 +36,24 @@ require(["js/qlik"], function (qlik) {
   const chevron = document.getElementById("chevron");
   const mobchevron = document.getElementById("mobIcon");
   var app = qlik.openApp("3158d525-f15e-4afd-acdb-cb8a162e78ef", config);
-  var app2 = qlik.openApp("48365501-b7c9-4dd7-ba1e-4e0d935b368e", config);
   const main = document.getElementById("maincontent");
-  const prevbtn = document.getElementById("btn2");
-  const closebtn = document.getElementById("btn3");
-  const forwardbtn = document.getElementById("btn4");
-  const div = document.getElementById("select");
-
+  const exportdata = document.getElementById("export");
+  const nextChart = document.getElementById("nextChart");
+  const linechart = document.getElementById("linechart");
+  const chevron2 = document.getElementById("chevron2");
+  const prevtext = document.getElementById("prevtext");
   //getting windows width
   //when a window screen change the function will call
   var windowWidth = window.innerWidth;
   window.onresize = onload = () => {
     windowWidth = this.innerWidth;
     Sidebar(windowWidth);
-    qlik.resize();
   };
 
   Sidebar(windowWidth);
   function Sidebar(windowWidth) {
     //windows width is less than 1000
+
     if (windowWidth < 1000) {
       Sidemenu.style.height = "5%";
       Sidemenu.style.width = "100%";
@@ -66,6 +65,7 @@ require(["js/qlik"], function (qlik) {
       }
       mobBtn.addEventListener("click", mobilescreen);
     }
+
     //windows width is greater than 1000
     else {
       Sidemenu.style.width = "5%";
@@ -111,7 +111,6 @@ require(["js/qlik"], function (qlik) {
   function lapscreen() {
     if (Sidemenu.style.width === "5%") {
       Sidemenu.style.width = "20%";
-
       Sidemenu.style.transition = "1s  ease";
       main.style.paddingRight = "10px";
       for (i = 0; i < tabs.length; i++) {
@@ -140,7 +139,9 @@ require(["js/qlik"], function (qlik) {
   //Default active tabs
   tabs[0].classList.add("active");
   show[0].classList.add("showdisplay");
+
   //switchin tabs condition using For each
+
   tabs.forEach((t, i) => {
     t.addEventListener("click", () => {
       tabs.forEach((t) => {
@@ -154,249 +155,247 @@ require(["js/qlik"], function (qlik) {
 
       t.classList.remove("disable");
       t.classList.add("active");
+
       //for displaying the content when the tab click
       show[i].classList.remove("shownone");
       show[i].classList.add("showdisplay");
-      //Qlik Objects Navigation or switching conditions
-      switch (show[i].id) {
-        case "document":
-          documentTab();
-          break;
-        case "contact":
-          contact();
-          break;
-        case "prospect":
-          Prospect();
-          break;
-        case "workflow":
-          workflow();
-          break;
-        case "chating":
-          chating();
-          break;
-        case "marketing":
-          marketing();
-          break;
-        case "email":
-          Email();
-          break;
-        case "transaction":
-          transition();
-          break;
-        case "maintaince":
-          maintainence();
-          break;
-        default:
-          Dashboard();
-          break;
-      }
+      gettingTabs(show[i].id);
     });
   });
 
-  //Getting Qlik Objects
-  function Dashboard() {
-    //get objects -- inserted here --
+  const objsarr = {
+    dashboard: {
+      card1: "uBCNQnw",
+      card2: "DPYTJen",
+      card3: "dpHNqS",
+      linechart: "kjcmDFj",
+      barchart: "YtZMjQu",
+      "Qlik-table": "dXgjx",
+      "Gauge chart": "MqMVdfh",
+      "pei chart": "CxEzm",
+    },
+    document: {
+      Charts1: "DPYTJen",
+      Charts2: "MqMVdfh",
+      Charts3: "YtZMjQu",
+      Charts4: "CxEzm",
+    },
+    contact: {
+      Charts5: "dpHNqS",
+      Charts6: "CxEzm",
+      Charts7: "MqMVdfh",
+      Charts8: "dXgjx",
+    },
+    prospect: {
+      Charts9: "uBCNQnw",
+      Charts10: "dXgjx",
+      Charts11: "MqMVdfh",
+      Charts12: "CxEzm",
+    },
+    workflow: {
+      Charts13: "MqMVdfh",
+      Charts14: "YtZMjQu",
+      Charts15: "dXgjx",
+      Charts16: "CxEzm",
+    },
+    chating: {
+      Charts17: "uBCNQnw",
+      Charts18: "CxEzm",
+      Charts19: "MqMVdfh",
+      Charts20: "YtZMjQu",
+    },
+    marketing: {
+      Charts21: "MqMVdfh",
+      Charts22: "CxEzm",
+      Charts23: "kjcmDFj",
+      Charts24: "dXgjx",
+    },
+    email: {
+      Charts25: "CxEzm",
+      Charts26: "MqMVdfh",
+      Charts27: "DPYTJen",
+      Charts28: "YtZMjQu",
+    },
+    transaction: {
+      Charts29: "DPYTJen",
+      Charts30: "MqMVdfh",
+      Charts31: "CxEzm",
+      Charts32: "YtZMjQu",
+    },
+    maintaince: {
+      Charts33: "MqMVdfh",
+      Charts34: "YtZMjQu",
+      Charts35: "CxEzm",
+      Charts36: "dXgjx",
+    },
+  };
+  console.log(objsarr);
+  function gettingTabs(tab) {
+    for (const x in objsarr[tab]) {
+      app.getObject(x, objsarr[tab][x]).then(() => {
+        document.getElementById(x).classList.remove("loader");
+      });
+    }
+  }
+  for (const x in objsarr.dashboard) {
+    app.getObject(x, objsarr.dashboard[x]).then(() => {
+      document.getElementById(x).classList.remove("loader");
+    });
+  }
+  //qlik selection bar
+  app
+    .getObject("CurrentSelections", "CurrentSelections")
+    .then((CurrentSelection) => {
+      console.log(CurrentSelection);
+      setTimeout(() => {
+        const pagerElements = document.getElementsByClassName(
+          "qv-selections-pager"
+        );
+        console.log(pagerElements);
+        const buttondiv = pagerElements[0].children[0];
+        buttondiv.innerHTML = `<div class="buttons1" id="buttonDiv">
+          <button class="button1" id="btn2" title="Backward Selection">
+            <i class="bx bx-chevron-left" id="chevron"></i>
+          </button>
+          <button class="button1" id="btn3" title="clearAll Selection">
+            <i class="bx bx-x-circle"></i>
+          </button>
+          <button class="button1" id="btn4" title="Forward Selection">
+            <i class="bx bx-chevron-right" id="chevron"></i>
+          </button>
+        </div>`;
+        const prevbtn = document.getElementById("btn2");
+        const closebtn = document.getElementById("btn3");
+        const forwardbtn = document.getElementById("btn4");
+        prevbtn.addEventListener("click", previous);
+        function previous() {
+          app.back();
+        }
 
-    app.getObject("card1", "uBCNQnw").then(() => {
-      document.getElementById("card1").classList.remove("loader");
-    });
-    app.getObject("card2", "DPYTJen").then(() => {
-      document.getElementById("card2").classList.remove("loader");
-    });
-    app.getObject("card3", "dpHNqS").then(() => {
-      document.getElementById("card3").classList.remove("loader");
-    });
-    app.getObject("linechart", "kjcmDFj").then(() => {
-      document.getElementById("linechart").classList.remove("loader");
-    });
-    app.getObject("barchart", "YtZMjQu").then(() => {
-      document.getElementById("barchart").classList.remove("loader");
-    });
-    app.getObject("Qlik-table", "dXgjx").then(() => {
-      document.getElementById("Qlik-table").classList.remove("loader");
-    });
-    app.getObject("Gauge chart", "MqMVdfh").then(() => {
-      document.getElementById("Gauge chart").classList.remove("loader");
-    });
-    app.getObject("pei chart", "CxEzm").then(() => {
-      document.getElementById("pei chart").classList.remove("loader");
-    });
-  }
-  function documentTab() {
-    app.getObject("Charts1", "DPYTJen").then(() => {
-      document.getElementById("Charts1").classList.remove("loader");
-    });
-    app.getObject("Charts2", "MqMVdfh").then(() => {
-      document.getElementById("Charts2").classList.remove("loader");
-    });
-    app.getObject("Charts3", "YtZMjQu").then(() => {
-      document.getElementById("Charts3").classList.remove("loader");
-    });
-    app.getObject("Charts4", "CxEzm").then(() => {
-      document.getElementById("Charts4").classList.remove("loader");
-    });
-  }
-  function contact() {
-    app.getObject("Charts5", "dpHNqS").then(() => {
-      document.getElementById("Charts5").classList.remove("loader");
+        //clearall selection
+        closebtn.addEventListener("click", clearall);
+        function clearall() {
+          app.clearAll();
+        }
+
+        //forward the selection
+        forwardbtn.addEventListener("click", forward);
+        function forward() {
+          app.forward();
+        }
+        console.log(buttondiv);
+      }, 100);
     });
 
-    app.getObject("Charts6", "CxEzm").then(() => {
-      document.getElementById("Charts6").classList.remove("loader");
-    });
+  // Exporting Data of chart using Visualization api
+  exportdata.addEventListener("click", Exportdata);
+  function Exportdata() {
+    app.visualization.get("YtZMjQu").then(function (vis) {
+      vis.exportData({ format: "CSV_T", state: "A" }).then(function (link) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", link, true);
+        xhr.responseType = "blob";
 
-    app.getObject("Charts7", "MqMVdfh").then(() => {
-      document.getElementById("Charts7").classList.remove("loader");
-    });
+        xhr.onload = function () {
+          if (xhr.status === 200) {
+            var blob = new Blob([xhr.response], { type: "text/csv" });
+            var downloadLink = document.createElement("a");
+            downloadLink.href = URL.createObjectURL(blob);
+            downloadLink.download = "Barhchart.csv"; // Set a custom filename
 
-    app.getObject("Charts8", "dXgjx").then(() => {
-      document.getElementById("Charts8").classList.remove("loader");
-    });
-  }
-  function Prospect() {
-    app.getObject("Charts9", "uBCNQnw").then(() => {
-      document.getElementById("Charts9").classList.remove("loader");
-    });
-    app.getObject("Charts10", "dXgjx").then(() => {
-      document.getElementById("Charts10").classList.remove("loader");
-    });
-    app.getObject("Charts11", "MqMVdfh").then(() => {
-      document.getElementById("Charts11").classList.remove("loader");
-    });
-    app.getObject("Charts12", "CxEzm").then(() => {
-      document.getElementById("Charts12").classList.remove("loader");
-    });
-  }
-  function workflow() {
-    app.getObject("Charts13", "MqMVdfh").then(() => {
-      document.getElementById("Charts13").classList.remove("loader");
-    });
-    app.getObject("Charts14", "YtZMjQu").then(() => {
-      document.getElementById("Charts14").classList.remove("loader");
-    });
-    app.getObject("Charts15", "dXgjx").then(() => {
-      document.getElementById("Charts15").classList.remove("loader");
-    });
-    app.getObject("Charts16", "CxEzm").then(() => {
-      document.getElementById("Charts16").classList.remove("loader");
-    });
-  }
-  function chating() {
-    app.getObject("Charts17", "uBCNQnw").then(() => {
-      document.getElementById("Charts17").classList.remove("loader");
-    });
-    app.getObject("Charts18", "CxEzm").then(() => {
-      document.getElementById("Charts18").classList.remove("loader");
-    });
-    app.getObject("Charts19", "MqMVdfh").then(() => {
-      document.getElementById("Charts19").classList.remove("loader");
-    });
-    app.getObject("Charts20", "YtZMjQu").then(() => {
-      document.getElementById("Charts20").classList.remove("loader");
-    });
-  }
-  function marketing() {
-    app.getObject("Charts21", "MqMVdfh").then(() => {
-      document.getElementById("Charts21").classList.remove("loader");
-    });
-    app.getObject("Charts22", "CxEzm").then(() => {
-      document.getElementById("Charts22").classList.remove("loader");
-    });
-    app.getObject("Charts23", "kjcmDFj").then(() => {
-      document.getElementById("Charts23").classList.remove("loader");
-    });
-    app.getObject("Charts24", "dXgjx").then(() => {
-      document.getElementById("Charts24").classList.remove("loader");
-    });
-  }
-  function Email() {
-    app.getObject("Charts25", "CxEzm").then(() => {
-      document.getElementById("Charts25").classList.remove("loader");
-    });
-    app.getObject("Charts26", "MqMVdfh").then(() => {
-      document.getElementById("Charts26").classList.remove("loader");
-    });
-    app.getObject("Charts27", "DPYTJen").then(() => {
-      document.getElementById("Charts27").classList.remove("loader");
-    });
-    app.getObject("Charts28", "YtZMjQu").then(() => {
-      document.getElementById("Charts28").classList.remove("loader");
-    });
-  }
-  function transition() {
-    app.getObject("Charts29", "DPYTJen").then(() => {
-      document.getElementById("Charts29").classList.remove("loader");
-    });
-    app.getObject("Charts30", "MqMVdfh").then(() => {
-      document.getElementById("Charts30").classList.remove("loader");
-    });
-    app.getObject("Charts31", "CxEzm").then(() => {
-      document.getElementById("Charts31").classList.remove("loader");
-    });
-    app.getObject("Charts32", "YtZMjQu").then(() => {
-      document.getElementById("Charts32").classList.remove("loader");
-    });
-  }
-  function maintainence() {
-    app.getObject("Charts33", "MqMVdfh").then(() => {
-      document.getElementById("Charts33").classList.remove("loader");
-    });
-    app.getObject("Charts34", "YtZMjQu").then(() => {
-      document.getElementById("Charts34").classList.remove("loader");
-    });
-    app.getObject("Charts35", "CxEzm").then(() => {
-      document.getElementById("Charts35").classList.remove("loader");
-    });
-    app.getObject("Charts36", "dXgjx").then(() => {
-      document.getElementById("Charts36").classList.remove("loader");
-    });
-  }
-  //defaulty geting the qlik object for mainpage
-  Dashboard();
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+          }
+        };
 
-  //customized selection options
-
-  //previous selection
-  prevbtn.addEventListener("click", previous);
-  function previous() {
-    app.back();
-  }
-  //clearall selection
-  closebtn.addEventListener("click", clearall);
-  function clearall() {
-    app.clearAll();
+        xhr.send();
+      });
+    });
   }
 
-  //forward the selection
-  forwardbtn.addEventListener("click", forward);
-  function forward() {
-    app.forward();
-  }
-  //condition for manual selection list
-  // app.getList("SelectionObject", function (reply) {
-  //   console.log(reply);
-  //   var str = reply.qSelectionObject.qSelections;
-  //   console.log();
-  //   console.log(str);
-  //   div.innerHTML = "";
+  //Bookmark Functions for applying bookmarks
+  // function option1() {
+  //   app.bookmark.apply("db4e31c1-69b4-4f5e-abfd-682e92b53a9c");
+  // }
+  // function option2() {
+  //   app.bookmark.apply("9d14b53a-f406-48fd-8866-1184a038278d");
+  // }
+  // function option3() {
+  //   app.bookmark.apply("6691bb34-ccf1-4c7f-8f5e-45dd75f61ec5");
+  // }
 
-  //   for (i = 0; i < str.length; i++) {
-  //     var content = document.createElement("div");
-  //     content.id = "selection-container";
-  //     content.innerText =
-  //       str[i].qField + " " + str[i].qSelectedCount + " of " + str[i].qTotal;
-  //     div.style.marginTop = "5px";
-  //     div.appendChild(content);
+  // document.querySelector("#admin").addEventListener("click", function () {
+  //   if (this.value === "1") {
+  //     option1();
+  //   }
+  //   if (this.value === "2") {
+  //     option2();
+  //   }
+  //   if (this.value === "3") {
+  //     option3();
   //   }
   // });
-
-  //bookmark api
-  app.bookmark.create("City", "City-bookmark", "kjcmDFj");
-  app.bookmark.apply("Test");
-  //getting global api
-  var global = qlik.getGlobal(config);
-  global.getAuthenticatedUser(function (reply) {
-    alert("Welcome User:" + reply.qReturn);
+  nextChart.addEventListener("click", function switching() {
+    if (linechart.id === "linechart") {
+      chevron2.classList.remove("bx-chevron-right");
+      chevron2.classList.add("bx-chevron-left");
+      linechart.id = "barchart2";
+      app.getObject("barchart2", "YtZMjQu");
+      prevtext.innerText = "Barchart";
+    } else {
+      chevron2.classList.remove("bx-chevron-left");
+      chevron2.classList.add("bx-chevron-right");
+      linechart.id = "linechart";
+      app.getObject("linechart", "kjcmDFj");
+      prevtext.innerText = "Linechart";
+    }
   });
-  app.getObject("CurrentSelections", "CurrentSelections");
+  const field = app.field("EmployeeName").getData();
+  const searcharr = {
+    1: [{ qText: "Tom Lindwall" }],
+    2: [{ qText: "Tom Lindwall" }, { qText: "Leif Shine" }],
+    3: [
+      { qText: "Tom Lindwall" },
+      { qText: "Leif Shine" },
+      { qText: "Rock Roll" },
+    ],
+    4: [
+      {
+        qText: "Tom Lindwall",
+      },
+      { qText: "Leif Shine" },
+      { qText: "Rock Roll" },
+      { qText: "Helen Brolin" },
+    ],
+    5: [
+      {
+        qText: "Tom Lindwall",
+      },
+      { qText: "Leif Shine" },
+      { qText: "Rock Roll" },
+      { qText: "Helen Brolin" },
+      { qText: "Joan Callins" },
+    ],
+  };
+  for (const i = 0; i < searcharr.length; i++) {
+    console.log(searcharr[i]);
+  }
+  const searchbar = document.querySelector("#searchbar");
+  searchbar.addEventListener("input", function () {
+    searchbarfun(searchbar.value);
+    function searchbarfun(select) {
+      for (const x in searcharr[select]) {
+        field.selectValues(searcharr[select]);
+      }
+      if (select === "") {
+        app.clearAll();
+      }
+      if (select > 5) {
+        alert("you can select only top 5 values");
+        searchbar.value = "";
+        app.clearAll();
+      }
+    }
+  });
 });

@@ -47,12 +47,14 @@
   justify-content: center;
   width: 30px;
   height: 30px;
-  background-color: #3963ad;
+  background-color: #4477aa;
   border-radius: 50%;
   outline: none;
   border: none;
   cursor: pointer;
   transition: 5s all ease;
+  margin-right: 5px;
+  padding: 5px;
 }
 .button1 i {
   color: #fff;
@@ -68,7 +70,7 @@
   justify-content: center;
   width: 30px;
   height: 30px;
-  background-color: #3963ad;
+  background-color: #4477aa;
   border-radius: 50%;
   outline: none;
   border: none;
@@ -76,7 +78,7 @@
   transition: 5s all ease;
 }
 .button1:hover {
-  background-color: #3963ad;
+  background-color: #4477aa;
   border-radius: 50%;
 }
 #mobileButton {
@@ -131,17 +133,18 @@ hr {
 }
 /* maincontent styling */
 #maincontent {
-  width: 93%;
-  height: 97%;
+  width: 95%;
+  height: 98%;
   margin-left: 5px;
   margin-right: 5px;
+  padding-right: 10px;
 }
 /* showcase styling */
 .showcase {
-  height: 89%;
+  height: 90%;
   width: 100%;
   display: none;
-  margin-top: 7px;
+  margin-top: 5px;
   margin-left: 5px;
 }
 #contents {
@@ -190,7 +193,13 @@ select {
   margin-top: 5px;
   margin-bottom: 10px;
 }
-.cards {
+#kpi-cards {
+  height: 40%;
+}
+#charts {
+  height: 57%;
+}
+.cards1 {
   width: 32%;
   height: 100%;
   border: 1px solid #ffffff;
@@ -200,19 +209,33 @@ select {
   padding: 10px;
   position: relative;
 }
-.cards:hover {
+.cards2 {
+  width: 32%;
+  height: 100%;
+  border: 1px solid #ffffff;
+  background-color: #ffffff;
+  flex-grow: 1;
+  border-radius: 10px;
+  padding: 10px;
+  position: relative;
+}
+.cards1:hover {
+  box-shadow: 0px 0px 5px #041737;
+  cursor: pointer;
+}
+.cards2:hover {
   box-shadow: 0px 0px 5px #041737;
   cursor: pointer;
 }
 #table {
   width: 100%;
-  height: 40%;
+  height: 38%;
   border: 1px solid #ffffff;
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
   margin-top: 10px;
-  padding: 5px;
+  padding: 10px;
   border-radius: 10px;
 }
 
@@ -255,13 +278,13 @@ select {
 /* right container */
 #Right-container {
   width: 20%;
-  height: 100%;
+  height: 99%;
   border: 1px solid #ffffff;
   background-color: #ffffff;
   margin-left: 10px;
   border-radius: 10px;
   margin-top: 5px;
-  padding: 5px;
+  padding: 10px;
 }
 #Right-container:hover {
   box-shadow: 0px 0px 5px #041737;
@@ -291,7 +314,7 @@ select {
 
 /* classlist added in JS */
 .active {
-  background-color: #3963ad !important;
+  background-color: #4477aa !important;
   color: #fff !important;
   border-radius: 6px !important;
 }
@@ -388,6 +411,10 @@ select {
   padding: 5px;
   height: 99%;
 }
+.card-heading:hover {
+  box-shadow: 0px 0px 5px #041737;
+  cursor: pointer;
+}
 .QlikObjects {
   width: 100%;
   height: 95%;
@@ -466,6 +493,67 @@ select {
   text-align: center;
 }
 /* qlik selection styling ends */
+#barChart {
+  display: none;
+}
+#export {
+  background-color: #4477aa;
+  color: #fff;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 5px;
+  gap: 2px;
+}
+.barclass {
+  width: 100% !important;
+  height: 80% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+#buttondiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+#dropdown {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+/* .qv-panel-current-selections .qv-subtoolbar-button.toggle-button,
+.touch-on .qv-panel-current-selections .qv-subtoolbar-button.toggle-button {
+  display: none;
+} */
+#clearselections {
+  display: flex;
+}
+.qv-panel-current-selections
+  .buttons
+  .qv-subtoolbar-button.qv-subtoolbar-button,
+.qv-panel-current-selections
+  .buttons-end
+  .qv-subtoolbar-button.qv-subtoolbar-button {
+  height: 37px;
+  line-height: 37px;
+  /* display: none; */
+}
+.sn-kpi-measure-title.sn-kpi-ellips-text {
+  color: #4477aa;
+}
+#searchdiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 /* width 700-1000 */
 @media screen and (min-width: 700px) and (max-width: 1000px) {
@@ -477,6 +565,9 @@ select {
   header {
     margin-left: 0px;
   }
+  #header {
+    padding-bottom: 5px;
+  }
   #sidebar {
     width: 100%;
     height: 5%;
@@ -487,8 +578,8 @@ select {
   }
   #maincontent {
     width: 100%;
-
     margin-left: 0px;
+    padding: 5px;
   }
 
   #contents {
@@ -584,6 +675,32 @@ select {
   .qlikobjects3 {
     height: 90%;
   }
+  #kpi-cards {
+    height: 40%;
+  }
+  #charts {
+    height: 57%;
+  }
+  .cards1 {
+    width: 32%;
+    height: 200px;
+    border: 1px solid #ffffff;
+    background-color: #ffffff;
+    flex-grow: 1;
+    border-radius: 10px;
+    padding: 10px;
+    position: relative;
+  }
+  .cards2 {
+    width: 32%;
+    height: 200px;
+    border: 1px solid #ffffff;
+    background-color: #ffffff;
+    flex-grow: 1;
+    border-radius: 10px;
+    padding: 10px;
+    position: relative;
+  }
 }
 /* width less than 700 */
 @media screen and (max-width: 700px) {
@@ -591,6 +708,9 @@ select {
     width: 100%;
     height: 100%;
     flex-direction: column;
+  }
+  #header {
+    padding-bottom: 5px;
   }
   #sidebar {
     width: 100%;
@@ -700,5 +820,31 @@ select {
   }
   #header2 {
     gap: 5px;
+  }
+  #kpi-cards {
+    height: 40%;
+  }
+  #charts {
+    height: 57%;
+  }
+  .cards1 {
+    width: 100%;
+    height: 200px;
+    border: 1px solid #ffffff;
+    background-color: #ffffff;
+    flex-grow: 1;
+    border-radius: 10px;
+    padding: 10px;
+    position: relative;
+  }
+  .cards2 {
+    width: 100%;
+    height: 200px;
+    border: 1px solid #ffffff;
+    background-color: #ffffff;
+    flex-grow: 1;
+    border-radius: 10px;
+    padding: 10px;
+    position: relative;
   }
 }

@@ -36,6 +36,7 @@
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   </head>
   <body>
     <!-- Whole body div -->
@@ -114,17 +115,17 @@
             <div class="" id="header1">
               <h2>Overview</h2>
             </div>
-            <div class="buttons1">
-              <button class="button1" id="btn2">
+            <!-- <div class="buttons1" id="buttonDiv">
+              <button class="button1" id="btn2" title="Backward Selection">
                 <i class="bx bx-chevron-left" id="chevron"></i>
               </button>
-              <button class="button1" id="btn3">
+              <button class="button1" id="btn3" title="clearAll Selection">
                 <i class="bx bx-x-circle"></i>
               </button>
-              <button class="button1" id="btn4">
+              <button class="button1" id="btn4" title="Forward Selection">
                 <i class="bx bx-chevron-right" id="chevron"></i>
               </button>
-            </div>
+            </div> -->
             <div class="" id="header2">
               <span class="material-symbols-sharp"> notifications_active </span>
               <img
@@ -136,22 +137,23 @@
               <h5 class="">
                 <select id="admin">
                   <option>Year</option>
-                  <option>2021</option>
-                  <option>2022</option>
-                  <option>2023</option>
+                  <option value="1">2021</option>
+                  <option value="2">2022</option>
+                  <option value="3">2023</option>
                 </select>
               </h5>
             </div>
           </div>
         </header>
-        <!-- header ends -->
-
-        <!--Qliks selection bar  -->
         <div
           id="CurrentSelections"
           class="qvobjects"
           style="position: relative; top: 0; left: 0; width: 100%; height: 38px"
         ></div>
+        <!-- header ends -->
+
+        <!--Qliks selection bar  -->
+
         <!-- Qliks selection bar ends -->
         <!-- <div id="select"></div> -->
 
@@ -160,7 +162,7 @@
           <section id="contents">
             <section id="cards-container" class="container">
               <div id="kpi-cards" class="card-container">
-                <div id="card" class="cards">
+                <div class="cards1">
                   <div class="header">
                     <h4>Document</h4>
                     <div class="icon2">
@@ -171,7 +173,7 @@
                     <div class="kpi-container loader" id="card1"></div>
                   </div>
                 </div>
-                <div id="card" class="cards">
+                <div class="cards1">
                   <div class="header">
                     <h4>Contact</h4>
                     <div class="icon2">
@@ -182,7 +184,7 @@
                     <div class="kpi-container loader" id="card2"></div>
                   </div>
                 </div>
-                <div id="card" class="cards">
+                <div class="cards1">
                   <div class="header">
                     <h4>Email</h4>
                     <div class="icon2">
@@ -195,17 +197,30 @@
                 </div>
               </div>
               <div id="charts" class="card-container">
-                <div id="chart-line" class="cards">
+                <div id="chart-line" class="cards2">
                   <div class="header">
                     <h4>Recent Marketing</h4>
+                    <div id="buttondiv">
+                      <!-- <button class="button1" id="prevChart"> -->
+                      <!-- <i class="bx bx-chevron-left" id="chevron"></i> -->
+                      <!-- </button> -->
+                      <button class="button1" id="nextChart">
+                        <i class="bx bx-chevron-right" id="chevron2"></i>
+                      </button>
+                      <p id="prevtext">Linechart</p>
+                    </div>
                   </div>
                   <div class="qlikobjects1">
                     <div id="linechart" class="charts loader"></div>
+                    <!-- <div id="barChart" class="charts"></div> -->
                   </div>
                 </div>
-                <div id="chart-bar" class="cards">
+                <div id="chart-bar" class="cards2">
                   <div class="header">
                     <h4>Recent Workflow</h4>
+                    <button id="export">
+                      <i class="bx bx-cloud-download"></i> <span>Export</span>
+                    </button>
                   </div>
                   <div class="qlikobjects1">
                     <div id="barchart" class="charts loader"></div>
@@ -232,15 +247,30 @@
             <!-- Right body -->
             <div class="heading">
               <h5>Pie chart</h5>
+
+              <!-- <select id="dropdown">
+                <option>Select Empolyee</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select> -->
+              <div id="searchdiv">
+                <input
+                  type="number"
+                  id="searchbar"
+                  placeholder="No of Empolyee"
+                  maxlength="5"
+                />
+              </div>
+
               <div class="qlikobjects3">
                 <div id="pei chart" class="pie-charts loader"></div>
               </div>
             </div>
-
             <!-- RIGHT HEADING2 ENDS -->
-
             <!-- Right body2 -->
-
             <!-- Right body ends -->
           </aside>
         </div>
