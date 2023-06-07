@@ -25,6 +25,7 @@ require(["js/qlik"], function (qlik) {
   $("#closePopup").click(function () {
     $("#popup").hide();
   });
+
   //Getting HTML Elements
   const button = document.getElementById("btn");
   const SideContent = document.getElementsByClassName("Sidebar");
@@ -42,6 +43,8 @@ require(["js/qlik"], function (qlik) {
   const linechart = document.getElementById("linechart");
   const chevron2 = document.getElementById("chevron2");
   const prevtext = document.getElementById("prevtext");
+  const titlebar = document.getElementById("Custom title");
+  const titlebtn = document.getElementById("titlebtn");
   //getting windows width
   //when a window screen change the function will call
   var windowWidth = window.innerWidth;
@@ -170,63 +173,63 @@ require(["js/qlik"], function (qlik) {
       card3: "dpHNqS",
       linechart: "kjcmDFj",
       barchart: "YtZMjQu",
-      "Qlik-table": "dXgjx",
-      "Gauge chart": "MqMVdfh",
-      "pei chart": "CxEzm",
+      "Qlik-table": "faa38949-8536-46b1-a195-b003425cd2fd",
+      "Gauge chart": "14178798-585d-4c7a-a833-2737adec64b3",
+      "pei chart": "9d0e08fb-f90d-4f83-b79a-751e05ccf6e2",
     },
     document: {
       Charts1: "DPYTJen",
-      Charts2: "MqMVdfh",
+      Charts2: "14178798-585d-4c7a-a833-2737adec64b3",
       Charts3: "YtZMjQu",
-      Charts4: "CxEzm",
+      Charts4: "9d0e08fb-f90d-4f83-b79a-751e05ccf6e2",
     },
     contact: {
       Charts5: "dpHNqS",
-      Charts6: "CxEzm",
-      Charts7: "MqMVdfh",
-      Charts8: "dXgjx",
+      Charts6: "9d0e08fb-f90d-4f83-b79a-751e05ccf6e2",
+      Charts7: "14178798-585d-4c7a-a833-2737adec64b3",
+      Charts8: "faa38949-8536-46b1-a195-b003425cd2fd",
     },
     prospect: {
       Charts9: "uBCNQnw",
-      Charts10: "dXgjx",
-      Charts11: "MqMVdfh",
-      Charts12: "CxEzm",
+      Charts10: "faa38949-8536-46b1-a195-b003425cd2fd",
+      Charts11: "14178798-585d-4c7a-a833-2737adec64b3",
+      Charts12: "9d0e08fb-f90d-4f83-b79a-751e05ccf6e2",
     },
     workflow: {
-      Charts13: "MqMVdfh",
+      Charts13: "14178798-585d-4c7a-a833-2737adec64b3",
       Charts14: "YtZMjQu",
-      Charts15: "dXgjx",
-      Charts16: "CxEzm",
+      Charts15: "faa38949-8536-46b1-a195-b003425cd2fd",
+      Charts16: "9d0e08fb-f90d-4f83-b79a-751e05ccf6e2",
     },
     chating: {
       Charts17: "uBCNQnw",
-      Charts18: "CxEzm",
-      Charts19: "MqMVdfh",
+      Charts18: "9d0e08fb-f90d-4f83-b79a-751e05ccf6e2",
+      Charts19: "14178798-585d-4c7a-a833-2737adec64b3",
       Charts20: "YtZMjQu",
     },
     marketing: {
-      Charts21: "MqMVdfh",
-      Charts22: "CxEzm",
+      Charts21: "14178798-585d-4c7a-a833-2737adec64b3",
+      Charts22: "9d0e08fb-f90d-4f83-b79a-751e05ccf6e2",
       Charts23: "kjcmDFj",
-      Charts24: "dXgjx",
+      Charts24: "faa38949-8536-46b1-a195-b003425cd2fd",
     },
     email: {
-      Charts25: "CxEzm",
-      Charts26: "MqMVdfh",
+      Charts25: "9d0e08fb-f90d-4f83-b79a-751e05ccf6e2",
+      Charts26: "14178798-585d-4c7a-a833-2737adec64b3",
       Charts27: "DPYTJen",
       Charts28: "YtZMjQu",
     },
     transaction: {
       Charts29: "DPYTJen",
-      Charts30: "MqMVdfh",
-      Charts31: "CxEzm",
+      Charts30: "14178798-585d-4c7a-a833-2737adec64b3",
+      Charts31: "9d0e08fb-f90d-4f83-b79a-751e05ccf6e2",
       Charts32: "YtZMjQu",
     },
     maintaince: {
-      Charts33: "MqMVdfh",
+      Charts33: "14178798-585d-4c7a-a833-2737adec64b3",
       Charts34: "YtZMjQu",
-      Charts35: "CxEzm",
-      Charts36: "dXgjx",
+      Charts35: "9d0e08fb-f90d-4f83-b79a-751e05ccf6e2",
+      Charts36: "faa38949-8536-46b1-a195-b003425cd2fd",
     },
   };
   console.log(objsarr);
@@ -237,6 +240,7 @@ require(["js/qlik"], function (qlik) {
       });
     }
   }
+
   for (const x in objsarr.dashboard) {
     app.getObject(x, objsarr.dashboard[x]).then(() => {
       document.getElementById(x).classList.remove("loader");
@@ -385,17 +389,37 @@ require(["js/qlik"], function (qlik) {
   searchbar.addEventListener("input", function () {
     searchbarfun(searchbar.value);
     function searchbarfun(select) {
-      for (const x in searcharr[select]) {
-        field.selectValues(searcharr[select]);
-      }
       if (select === "") {
         app.clearAll();
       }
+      if (select === "0") {
+        alert("please select the values other than 0");
+        searchbar.value = "";
+
+        app.clearAll();
+      }
       if (select > 5) {
-        alert("you can select only top 5 values");
+        alert("You can select only top 5 values");
         searchbar.value = "";
         app.clearAll();
       }
+      if (select < 0) {
+        alert("Don't enter  negative values");
+        searchbar.value = "";
+        app.clearAll();
+      } else {
+        for (const x in searcharr[select]) {
+          field.selectValues(searcharr[select]);
+        }
+      }
     }
   });
+  titlebtn.addEventListener("click", () => {
+    app.visualization
+      .get("14178798-585d-4c7a-a833-2737adec64b3")
+      .then(function (vis) {
+        vis.setOptions({ title: titlebar.value });
+      });
+  });
 });
+//All the best.....

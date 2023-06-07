@@ -59,12 +59,12 @@
             <span class="Sidebar">Dashboard</span>
           </a>
           <a href="#" class="tabs">
-            <i class="bx bx-book-open"></i>
-            <span class="Sidebar">Document</span></a
+            <i class="bx bxs-cart"></i>
+            <span class="Sidebar">SalesList</span></a
           >
           <a href="#" class="tabs"
-            ><i class="bx bxs-contact"></i>
-            <span class="Sidebar">Contact</span></a
+            ><i class="bx bx-dollar"></i>
+            <span class="Sidebar">SalaryList</span></a
           >
           <a href="#" class="tabs"
             ><i class="bx bx-cart-add"></i>
@@ -128,19 +128,15 @@
             </div> -->
             <div class="" id="header2">
               <span class="material-symbols-sharp"> notifications_active </span>
-              <img
-                src="icons8-grinning-face-with-big-eyes-64.png"
-                alt=""
-                class="img-fluid"
-                style="height: 25px; width: 25px"
-              />
-              <h5 class="">
-                <select id="admin">
-                  <option>Year</option>
-                  <option value="1">2021</option>
-                  <option value="2">2022</option>
-                  <option value="3">2023</option>
-                </select>
+              <h5>
+                <button class="titlebtn2">
+                  <select id="admin">
+                    <option>Year</option>
+                    <option value="1">2021</option>
+                    <option value="2">2022</option>
+                    <option value="3">2023</option>
+                  </select>
+                </button>
               </h5>
             </div>
           </div>
@@ -164,7 +160,7 @@
               <div id="kpi-cards" class="card-container">
                 <div class="cards1">
                   <div class="header">
-                    <h4>Document</h4>
+                    <h4>Country vs Company</h4>
                     <div class="icon2">
                       <span class="material-symbols-sharp"> library_add </span>
                     </div>
@@ -175,9 +171,9 @@
                 </div>
                 <div class="cards1">
                   <div class="header">
-                    <h4>Contact</h4>
+                    <h4>Sales</h4>
                     <div class="icon2">
-                      <span class="material-symbols-sharp"> call </span>
+                      <i class="bx bxs-cart"></i>
                     </div>
                   </div>
                   <div class="qlikobjects-1">
@@ -186,9 +182,9 @@
                 </div>
                 <div class="cards1">
                   <div class="header">
-                    <h4>Email</h4>
+                    <h4>Salary</h4>
                     <div class="icon2">
-                      <span class="material-symbols-sharp"> mail </span>
+                      <i class="bx bx-dollar"></i>
                     </div>
                   </div>
                   <div class="qlikobjects-1">
@@ -199,7 +195,7 @@
               <div id="charts" class="card-container">
                 <div id="chart-line" class="cards2">
                   <div class="header">
-                    <h4>Recent Marketing</h4>
+                    <h4>City vs Country</h4>
                     <div id="buttondiv">
                       <!-- <button class="button1" id="prevChart"> -->
                       <!-- <i class="bx bx-chevron-left" id="chevron"></i> -->
@@ -207,7 +203,7 @@
                       <button class="button1" id="nextChart">
                         <i class="bx bx-chevron-right" id="chevron2"></i>
                       </button>
-                      <p id="prevtext">Linechart</p>
+                      <h4 id="prevtext">Linechart</h4>
                     </div>
                   </div>
                   <div class="qlikobjects1">
@@ -217,7 +213,7 @@
                 </div>
                 <div id="chart-bar" class="cards2">
                   <div class="header">
-                    <h4>Recent Workflow</h4>
+                    <h4>Age Frequency</h4>
                     <button id="export">
                       <i class="bx bx-cloud-download"></i> <span>Export</span>
                     </button>
@@ -230,7 +226,7 @@
             </section>
 
             <div id="table">
-              <h3>Table from Qlik</h3>
+              <h3>Employee Details</h3>
               <div class="qlikobjects2">
                 <div id="Qlik-table" class="loader"></div>
               </div>
@@ -239,14 +235,25 @@
           <aside id="Right-container" class="showcaseContent">
             <!-- RIGHT HEADING -->
             <div class="heading">
-              <h5>Gauge chart</h5>
+              <div id="flexdiv">
+                <div id="searchdivs" class="searchdiv1">
+                  <input
+                    type="text"
+                    id="Custom title"
+                    placeholder="Enter the title"
+                    maxlength="15"
+                  />
+                </div>
+                <button id="titlebtn" class="titlebtn2">Set Title</button>
+              </div>
+
               <div class="qlikobjects3">
                 <div id="Gauge chart" class="pie-charts loader"></div>
               </div>
             </div>
             <!-- Right body -->
             <div class="heading">
-              <h5>Pie chart</h5>
+              <h5>Salary Wise Employee List</h5>
 
               <!-- <select id="dropdown">
                 <option>Select Empolyee</option>
@@ -256,11 +263,11 @@
                 <option value="4">4</option>
                 <option value="5">5</option>
               </select> -->
-              <div id="searchdiv">
+              <div id="searchdiv" class="searchdiv1">
                 <input
                   type="number"
                   id="searchbar"
-                  placeholder="No of Empolyee"
+                  placeholder="Select No of Top Empolyees"
                   maxlength="5"
                 />
               </div>
@@ -281,13 +288,13 @@
           <div id="docbody">
             <div class="docs">
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Sales</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts1"></div>
                 </div>
               </div>
               <div class="card-heading">
-                <h3>Pie-chart</h3>
+                <h3>Age Count</h3>
 
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts2"></div>
@@ -296,13 +303,13 @@
             </div>
             <div class="docs">
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Age Frequency</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts3"></div>
                 </div>
               </div>
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Salary Wise Employee List</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts4"></div>
                 </div>
@@ -317,14 +324,14 @@
           <div id="docbody">
             <div class="docs">
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Salary</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts5"></div>
                 </div>
               </div>
 
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Salary Wise Employee List</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts6"></div>
                 </div>
@@ -332,13 +339,13 @@
             </div>
             <div class="docs">
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Age Count</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts7"></div>
                 </div>
               </div>
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Employee Details</h3>
 
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts8"></div>
@@ -354,13 +361,13 @@
           <div id="docbody">
             <div class="docs">
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Country vs Company</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts9"></div>
                 </div>
               </div>
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Employee Details</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts10"></div>
                 </div>
@@ -368,13 +375,13 @@
             </div>
             <div class="docs">
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Age Count</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts11"></div>
                 </div>
               </div>
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Salary Wise Employee List</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts12"></div>
                 </div>
@@ -389,13 +396,13 @@
           <div id="docbody">
             <div class="docs">
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Age Count</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts13"></div>
                 </div>
               </div>
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Age Frequency</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts14"></div>
                 </div>
@@ -403,13 +410,13 @@
             </div>
             <div class="docs">
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Employee Details</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts15"></div>
                 </div>
               </div>
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Salary Wise Employee List</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts16"></div>
                 </div>
@@ -424,13 +431,13 @@
           <div id="docbody">
             <div class="docs">
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Country vs Company</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts17"></div>
                 </div>
               </div>
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Salary Wise Employee List</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts18"></div>
                 </div>
@@ -438,14 +445,14 @@
             </div>
             <div class="docs">
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Age Count</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts19"></div>
                 </div>
               </div>
 
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Age Frequency</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts20"></div>
                 </div>
@@ -460,14 +467,14 @@
           <div id="docbody">
             <div class="docs">
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Age Count</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts21"></div>
                 </div>
               </div>
 
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Salary Wise Employee List</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts22"></div>
                 </div>
@@ -475,14 +482,14 @@
             </div>
             <div class="docs">
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>City vs Country</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts23"></div>
                 </div>
               </div>
 
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Employee Details</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts24"></div>
                 </div>
@@ -497,14 +504,14 @@
           <div id="docbody">
             <div class="docs">
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Salary Wise Employee List</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts25"></div>
                 </div>
               </div>
 
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Age Count</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts26"></div>
                 </div>
@@ -512,14 +519,14 @@
             </div>
             <div class="docs">
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Sales</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts27"></div>
                 </div>
               </div>
 
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Age Frequency</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts28"></div>
                 </div>
@@ -534,14 +541,14 @@
           <div id="docbody">
             <div class="docs">
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Sales</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts29"></div>
                 </div>
               </div>
 
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Age Count</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts30"></div>
                 </div>
@@ -549,14 +556,14 @@
             </div>
             <div class="docs">
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Salary Wise Employee List</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts31"></div>
                 </div>
               </div>
 
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Age Frequency</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts32"></div>
                 </div>
@@ -571,13 +578,13 @@
           <div id="docbody">
             <div class="docs">
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Age Count</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts33"></div>
                 </div>
               </div>
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Age Frequency</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts34"></div>
                 </div>
@@ -585,13 +592,13 @@
             </div>
             <div class="docs">
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Salary Wise Employee List</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts35"></div>
                 </div>
               </div>
               <div class="card-heading">
-                <h3>barchart</h3>
+                <h3>Employee Details</h3>
                 <div class="QlikObjects">
                   <div class="docCards loader" id="Charts36"></div>
                 </div>

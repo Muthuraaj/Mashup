@@ -265,7 +265,7 @@ select {
   justify-content: center;
   background-color: #deecf6;
   color: #3a98b5;
-  font-size: 2rem;
+  font-size: 1.6rem;
 }
 
 .green span {
@@ -446,7 +446,7 @@ select {
 }
 .qlikobjects3 {
   width: 100%;
-  height: 100%;
+  height: 80%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -506,6 +506,8 @@ select {
   cursor: pointer;
   padding: 5px;
   gap: 2px;
+  border: none;
+  outline: none;
 }
 .barclass {
   width: 100% !important;
@@ -549,12 +551,39 @@ select {
 .sn-kpi-measure-title.sn-kpi-ellips-text {
   color: #4477aa;
 }
-#searchdiv {
+.sn-kpi-title.sn-kpi-ellips-text {
+  color: #4477aa;
+}
+.searchdiv1 {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 5px;
 }
-
+#flexdiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  flex-wrap: wrap;
+  /* background-color: #4477aa;
+  color: #fff; */
+}
+.titlebtn2 {
+  padding: 5px;
+  background-color: #4477aa;
+  color: #fff;
+  outline: none;
+  border: none;
+  border-radius: 6px;
+}
+.titlebtn2 select {
+  color: #fff;
+  /* background-color: #000; */
+}
+.titlebtn2 option {
+  background-color: #041737;
+}
 /* width 700-1000 */
 @media screen and (min-width: 700px) and (max-width: 1000px) {
   #body {
@@ -848,3 +877,4 @@ select {
     position: relative;
   }
 }
+/* Goo onn broooo */
